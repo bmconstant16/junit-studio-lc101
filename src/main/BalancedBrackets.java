@@ -21,15 +21,31 @@ public class BalancedBrackets {
      * @param str - to be validated
      * @return true if balanced, false otherwise
      */
+
+    private String wordTest;
+
+    //constructor
+    public BalancedBrackets(String wordTest) {
+        this.wordTest = wordTest;
+    }
+
+
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
-        for (char ch : str.toCharArray()) {
-            if (ch == '[') {
-                brackets++;
-            } else if (ch == ']') {
-                brackets--;
-            }
+
+        if (str.indexOf("]") < str.indexOf("[")) {
+            return false;
         }
-        return brackets == 0;
+        else {
+            for (char ch : str.toCharArray()) {
+                if (ch == '[') {
+                    brackets++;
+                } else if (ch == ']') {
+                    brackets--;
+                }
+            }
+
+            return brackets == 0;
+        }
     }
 }
